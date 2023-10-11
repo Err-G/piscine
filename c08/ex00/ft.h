@@ -1,42 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/06 16:16:18 by ecarvalh          #+#    #+#             */
-/*   Updated: 2023/08/08 16:02:25 by ecarvalh         ###   ########.fr       */
+/*   Created: 2023/08/09 16:12:31 by ecarvalh          #+#    #+#             */
+/*   Updated: 2023/08/09 16:13:58 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FT_H
+# define FT_H
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+void	ft_putchar(char c);
+void	ft_swap(int *a, int *b);
+void	ft_putstr(char *str);
+int		ft_strlen(char *str);
+int		ft_strcmp(char *s1, char *s2);
 
-void	ft_putstr(char *str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		ft_putchar(str[i]);
-}
-
-int	main(int argc, char **argv)
-{
-	int	i;
-
-	i = argc;
-	if (argc <= 1)
-		return (0);
-	while (--i > 0)
-	{
-		ft_putstr(argv[i]);
-		ft_putchar('\n');
-	}
-	return (0);
-}
+#endif

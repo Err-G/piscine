@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   ft_show_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/06 16:16:18 by ecarvalh          #+#    #+#             */
-/*   Updated: 2023/08/08 16:02:25 by ecarvalh         ###   ########.fr       */
+/*   Created: 2023/08/10 14:43:57 by ecarvalh          #+#    #+#             */
+/*   Updated: 2023/08/10 14:48:11 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 void	ft_putchar(char c)
 {
@@ -19,24 +17,36 @@ void	ft_putchar(char c)
 
 void	ft_putstr(char *str)
 {
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		ft_putchar(str[i]);
+	while (*str)
+		ft_putchar(*str++);
 }
 
-int	main(int argc, char **argv)
+void	ft_putnbr(int nb)
 {
-	int	i;
+	unsigned int	num;
 
-	i = argc;
-	if (argc <= 1)
-		return (0);
-	while (--i > 0)
+	if (nb < 0)
 	{
-		ft_putstr(argv[i]);
-		ft_putchar('\n');
+		ft_putchar('-');
+		num = -nb;
 	}
-	return (0);
+	else
+		num = nb;
+	if (num >= 10)
+		ft_putnbr(num / 10);
+	ft_putchar(num % 10);
+}
+
+void	ft_show_tab(struct s_stock_str *par)
+{
+	while (par->str)
+	{
+		ft_putstr(par->str);
+		ft_putchar('\n');
+		ft_putnbr(par->size);
+		ft_putchar('\n');
+		ft_putstr(par->copy);
+		ft_putchar('\n');
+		par++;
+	}
 }

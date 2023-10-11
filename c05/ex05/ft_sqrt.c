@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/06 16:16:18 by ecarvalh          #+#    #+#             */
-/*   Updated: 2023/08/08 16:02:25 by ecarvalh         ###   ########.fr       */
+/*   Created: 2023/08/07 14:33:50 by ecarvalh          #+#    #+#             */
+/*   Updated: 2023/08/07 14:52:06 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *str)
+int	ft_sqrt(int nb)
 {
 	int	i;
 
-	i = -1;
-	while (str[++i])
-		ft_putchar(str[i]);
+	i = 0;
+	if (nb <= 0)
+		return (0);
+	while (i * i < nb && i <= 46340)
+		i++;
+	if (i * i == nb)
+		return (i);
+	else
+		return (0);
 }
-
+/*
+#include <stdlib.h>
+#include <stdio.h>
 int	main(int argc, char **argv)
 {
-	int	i;
-
-	i = argc;
-	if (argc <= 1)
-		return (0);
-	while (--i > 0)
-	{
-		ft_putstr(argv[i]);
-		ft_putchar('\n');
-	}
+	if (argc != 2)
+		return (1);
+	printf("%d\n", ft_sqrt(atoi(argv[1])));
 	return (0);
 }
+*/

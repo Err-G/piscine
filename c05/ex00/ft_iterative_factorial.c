@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/06 16:16:18 by ecarvalh          #+#    #+#             */
-/*   Updated: 2023/08/08 16:02:25 by ecarvalh         ###   ########.fr       */
+/*   Created: 2023/08/07 12:59:23 by ecarvalh          #+#    #+#             */
+/*   Updated: 2023/08/07 13:12:27 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
+int	ft_iterative_factorial(int nb)
 {
-	write(1, &c, 1);
+	int		i;
+	int		result;
+
+	i = 1;
+	result = 1;
+	if (nb < 0)
+		return (0);
+	while (i <= nb)
+	{
+		result *= i;
+		i++;
+	}
+	return (result);
 }
-
-void	ft_putstr(char *str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		ft_putchar(str[i]);
-}
-
+/*
+#include <stdio.h>
+#include <stdlib.h>
 int	main(int argc, char **argv)
 {
-	int	i;
+	if (argc != 2)
+		return (1);
 
-	i = argc;
-	if (argc <= 1)
-		return (0);
-	while (--i > 0)
-	{
-		ft_putstr(argv[i]);
-		ft_putchar('\n');
-	}
+	printf("%d\n", ft_iterative_factorial(atoi(argv[1])));
 	return (0);
 }
+*/

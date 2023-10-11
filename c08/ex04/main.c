@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/06 16:16:18 by ecarvalh          #+#    #+#             */
-/*   Updated: 2023/08/08 16:02:25 by ecarvalh         ###   ########.fr       */
+/*   Created: 2023/08/10 14:07:50 by ecarvalh          #+#    #+#             */
+/*   Updated: 2023/08/10 14:09:53 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
+#include "ft_stock_str.h"
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		ft_putchar(str[i]);
-}
+struct s_stock_str *ft_strs_to_tab(int ac, char **av);
 
 int	main(int argc, char **argv)
 {
-	int	i;
+	t_stock_str	*stock;
 
-	i = argc;
-	if (argc <= 1)
-		return (0);
-	while (--i > 0)
+	if (argc > 1)
 	{
-		ft_putstr(argv[i]);
-		ft_putchar('\n');
+		stock = ft_strs_to_tab(argc - 1, ++argv);
+		while (stock->str)
+		{
+			printf("str: %s\n", stock->str);
+			printf("copy: %s\n", stock->copy);
+			printf("size: %d\n", stock->size);
+			stock++;
+			printf("\n");
+		}
 	}
+	printf("\n");
 	return (0);
 }
